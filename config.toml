@@ -1,7 +1,6 @@
 baseURL = 'https://lemric.com/'
 languageCode = 'en'
 title = 'Lemric'
-theme = "main"
 paginate = 3
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
@@ -9,13 +8,7 @@ ignoreErrors = ["error-remote-getjson"]
 
 [outputs]
     home = [ "HTML", "RSS", "JSON"]
-[menu]
 
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 10
 [params]
       # Prefix URL to edit current page. Will display an "Edit this page" button on top right hand corner of every page.
       # Useful to give opportunity to people to create merge request for your doc.
