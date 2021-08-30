@@ -1,7 +1,7 @@
----
-title: "Event Dispatcher"
-date: 2021-08-28T20:21:00+02:00
----
++++
+title = "Event Dispatcher"
++++
+
 
 ### Events
 
