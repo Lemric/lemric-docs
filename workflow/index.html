@@ -1,0 +1,173 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.88.1">
+<meta name=description content>
+<meta name=author content="Dominik Labudzinski">
+<link rel=icon href=/images/favicon.png type=image/png>
+<title>Workflow - Lemric</title>
+<link href=/css/nucleus.css?1633948623 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1633948623 rel=stylesheet>
+<link href=/css/hybrid.css?1633948623 rel=stylesheet>
+<link href=/css/featherlight.min.css?1633948623 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1633948623 rel=stylesheet>
+<link href=/css/auto-complete.css?1633948623 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1633948623 rel=stylesheet>
+<link href=/css/theme.css?1633948623 rel=stylesheet>
+<link href=/css/tabs.css?1633948623 rel=stylesheet>
+<link href=/css/hugo-theme.css?1633948623 rel=stylesheet>
+<link href=/css/theme-mine.css?1633948623 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1633948623></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
+</head>
+<body data-url=/workflow/>
+<nav id=sidebar class=showVisitedLinks>
+<div id=header-wrapper>
+<div id=header>
+<a id=logo href=/>
+Lemric.com Docs
+</a>
+</div>
+</div>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/eventdispatcher/ title="Event Dispatcher" class=dd-item>
+<a href=/eventdispatcher/>
+Event Dispatcher
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/workflow/ title=Workflow class="dd-item
+parent
+active">
+<a href=/workflow/>
+Workflow
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+<section id=prefooter>
+<hr>
+<ul>
+</ul>
+</section>
+<section id=footer>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+Workflow
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#creating-a-workflow>Creating a Workflow</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Workflow
+</h1>
+<h3 id=creating-a-workflow>Creating a Workflow</h3>
+<p>The workflow component gives you an object oriented way to define a process or a life cycle that your object goes through.
+Each step or stage in the process is called a place. You do also define transitions that describe the action to get from one place to another.</p>
+<p>A set of places and transitions creates a definition. A workflow needs a Definition and a way to write the states to the objects
+(i.e. an instance of a com.lemric.workflow.markingstore.MarkingStoreInterface).</p>
+<p>Consider the following example for a blog post. A post can have one of a number of predefined statuses (draft, reviewed, rejected, published).
+In a workflow, these statuses are called places. You can define the workflow like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.workflow.DefinitionBuilder<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.labudzinski.workflow.Definition<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.labudzinski.workflow.PlaceInterface<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.labudzinski.workflow.Transition<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.labudzinski.workflow.Workflow<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.lemric.workflow.markingstore.MethodMarkingStore<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> java.util.HashMap<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> java.util.ArrayList<span style=color:#f92672>;</span>
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        DefinitionBuilder definitionBuilder <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> DefinitionBuilder<span style=color:#f92672>();</span>
+        Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> PlaceInterface<span style=color:#f92672>&gt;</span> places <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
+            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;draft&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> Place<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;draft&#34;</span><span style=color:#f92672>));</span>
+            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;reviewed&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> Place<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;reviewed&#34;</span><span style=color:#f92672>));</span>
+            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;rejected&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> Place<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;rejected&#34;</span><span style=color:#f92672>));</span>
+            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;published&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> Place<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;published&#34;</span><span style=color:#f92672>));</span>
+        <span style=color:#f92672>}};</span>
+        definitionBuilder<span style=color:#f92672>.</span><span style=color:#a6e22e>addPlaces</span><span style=color:#f92672>(</span>places<span style=color:#f92672>);</span>
+        <span style=color:#75715e>// Transitions are defined with a unique name, an origin place and a destination place
+</span><span style=color:#75715e></span>        definitionBuilder<span style=color:#f92672>.</span><span style=color:#a6e22e>addTransition</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>Transition<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+            add<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Transition<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;to_review&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>PlaceInterface<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+                add<span style=color:#f92672>(</span>places<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;draft&#34;</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}},</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>PlaceInterface<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+                add<span style=color:#f92672>(</span>places<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;reviewed&#34;</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}}));</span>
+            add<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Transition<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;publish&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>PlaceInterface<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+                add<span style=color:#f92672>(</span>places<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;reviewed&#34;</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}},</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>PlaceInterface<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+                add<span style=color:#f92672>(</span>places<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;published&#34;</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}}));</span>
+            add<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Transition<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;reject&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>PlaceInterface<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+                add<span style=color:#f92672>(</span>places<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;reviewed&#34;</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}},</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span>PlaceInterface<span style=color:#f92672>&gt;()</span> <span style=color:#f92672>{{</span>
+                add<span style=color:#f92672>(</span>places<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;rejected&#34;</span><span style=color:#f92672>));</span>
+            <span style=color:#f92672>}}));</span>
+        <span style=color:#f92672>}});</span>
+
+        Definition definition <span style=color:#f92672>=</span> definitionBuilder<span style=color:#f92672>.</span><span style=color:#a6e22e>build</span><span style=color:#f92672>();</span>
+
+        Boolean singleState <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span> <span style=color:#75715e>// true if the subject can be in only one state at a given time
+</span><span style=color:#75715e></span>        String property <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;currentState&#34;</span><span style=color:#f92672>;</span> <span style=color:#75715e>// subject property name where the state is stored
+</span><span style=color:#75715e></span>        MethodMarkingStore marking <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> MethodMarkingStore<span style=color:#f92672>(</span>singleState<span style=color:#f92672>,</span> property<span style=color:#f92672>);</span>
+        Workflow workflow <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Workflow<span style=color:#f92672>(</span>definition<span style=color:#f92672>,</span> marking<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/js/clipboard.min.js?1633948623></script>
+<script src=/js/perfect-scrollbar.min.js?1633948623></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1633948623></script>
+<script src=/js/jquery.sticky.js?1633948623></script>
+<script src=/js/featherlight.min.js?1633948623></script>
+<script src=/js/highlight.pack.js?1633948623></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1633948623></script>
+<script src=/js/learn.js?1633948623></script>
+<script src=/js/hugo-learn.js?1633948623></script>
+<script src=/mermaid/mermaid.js?1633948623></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>

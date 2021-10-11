@@ -2,23 +2,23 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <meta name=author content="Dominik Labudzinski">
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Event Dispatcher - Lemric</title>
-<link href=/css/nucleus.css?1630321368 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630321368 rel=stylesheet>
-<link href=/css/hybrid.css?1630321368 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630321368 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630321368 rel=stylesheet>
-<link href=/css/auto-complete.css?1630321368 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630321368 rel=stylesheet>
-<link href=/css/theme.css?1630321368 rel=stylesheet>
-<link href=/css/tabs.css?1630321368 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630321368 rel=stylesheet>
-<link href=/css/theme-mine.css?1630321368 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630321368></script>
+<link href=/css/nucleus.css?1633948623 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1633948623 rel=stylesheet>
+<link href=/css/hybrid.css?1633948623 rel=stylesheet>
+<link href=/css/featherlight.min.css?1633948623 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1633948623 rel=stylesheet>
+<link href=/css/auto-complete.css?1633948623 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1633948623 rel=stylesheet>
+<link href=/css/theme.css?1633948623 rel=stylesheet>
+<link href=/css/tabs.css?1633948623 rel=stylesheet>
+<link href=/css/hugo-theme.css?1633948623 rel=stylesheet>
+<link href=/css/theme-mine.css?1633948623 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1633948623></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/eventdispatcher/>
@@ -37,6 +37,12 @@ parent
 active">
 <a href=/eventdispatcher/>
 Event Dispatcher
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/workflow/ title=Workflow class=dd-item>
+<a href=/workflow/>
+Workflow
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
@@ -92,13 +98,13 @@ Event Dispatcher
 </h1>
 <h3 id=events>Events</h3>
 <p>When an event is dispatched, it’s identified by a unique name (e.g. foo.action), which any number of listeners might be
-listening to. An com.labudzinski.eventdispatcher.Event instance is also created and passed to all of the listeners. As
+listening to. An com.lemric.eventdispatcher.Event instance is also created and passed to all of the listeners. As
 you’ll see later, the Event object itself often contains data about the event being dispatched.</p>
 <h3 id=the-dispatcher>The Dispatcher</h3>
 <p>The dispatcher is the central object of the event dispatching system. Generally one dispatcher is created, which keeps a
 register of listeners. When an event is dispatched via the dispatcher, it notifies all listeners registered in that
 event:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
         EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
@@ -107,8 +113,8 @@ event:</p>
 </code></pre></div><h3 id=connecting-listeners>Connecting Listeners</h3>
 <p>To use an existing event, connect the listener to the dispatcher so that it can be notified when the event is sent.
 Calling the dispatcher"s EventDispatcher.addListener() method associates all valid Callable to an Event:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.EventListenerInterface<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventListenerInterface<span style=color:#f92672>;</span>
 
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
@@ -129,7 +135,7 @@ to the dispatcher.</li>
 <p>After registering the listener with the dispatcher, it waits for notification about the event. In the example above,
 when the foo event is dispatched, the dispatcher calls the AcmeListener.preFoo() method and passes the Event object as a
 single argument:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.Event<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.Event<span style=color:#f92672>;</span>
 
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AcmeListener</span> <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>public</span> Event <span style=color:#a6e22e>onFooAction</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
@@ -148,7 +154,7 @@ system.</p>
 <p>Suppose you want to create a new event - notify - that is sent each time a user change product status. By sending this
 event, you will forward an instance of the custom event that has access to the product status. Start by creating this
 custom event class and documenting it:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.Event<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.Event<span style=color:#f92672>;</span>
 
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>NotifyEvent</span> <span style=color:#66d9ef>extends</span> Event <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>protected</span> Status status<span style=color:#f92672>;</span>
@@ -162,13 +168,13 @@ custom event class and documenting it:</p>
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 </code></pre></div><blockquote>
-<p>:warning: If you don’t need to pass any additional data to the event listeners, you can also use the default com.labudzinski.eventdispatcher.Event class.</p>
+<p>:warning: If you don’t need to pass any additional data to the event listeners, you can also use the default com.lemric.eventdispatcher.Event class.</p>
 </blockquote>
 <p>Each listener now has access to the status by NotifyEvent.getStatus() method.</p>
 <h4 id=dispatch-the-event>Dispatch the Event</h4>
 <p>The EventDispatcher.dispatch() method notifies all listeners about the event. Takes two arguments: an Event instance to
 pass to each listener for this event, and the name of the event to invoke:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
         EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
@@ -184,9 +190,9 @@ each listener of the order.placed event will receive the OrderPlacedEvent event.
 <p>The most common way to listen for an event is to register an event listener with the dispatcher.
 This listener can listen for one or more events and is notified each time these events are sent.</p>
 <p>Another way to listen to events is with the event subscriber. The event subscriber is a class that is able to tell the dispatcher exactly which events to subscribe to.
-Implements the com.labudzinski.eventdispatcher.EventSubscriberInterface interface that requires a single static method named getSubscribedEvents().
+Implements the com.lemric.eventdispatcher.EventSubscriberInterface interface that requires a single static method named getSubscribedEvents().
 Let"s take the following example of a subscriber subscribing to the kernel and order events:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.EventSubscriberInterface<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventSubscriberInterface<span style=color:#f92672>;</span>
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subscriber</span> <span style=color:#66d9ef>implements</span> EventSubscriberInterface <span style=color:#f92672>{</span>
     <span style=color:#a6e22e>@Override</span>
     <span style=color:#66d9ef>public</span> Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> Map<span style=color:#f92672>&lt;</span>EventListenerInterface<span style=color:#f92672>&lt;</span>Event<span style=color:#f92672>&gt;,</span> Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>getSubscribedEvents</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
@@ -218,7 +224,7 @@ Let"s take the following example of a subscriber subscribing to the kernel and o
 <span style=color:#f92672>}</span>
 </code></pre></div><p>This is very similar to the listening class, except that the class itself can tell the dispatcher what events to listen to.
 To register the subscriber with the dispatcher, use the addSubscriber() method:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.labudzinski.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
     <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
         EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
@@ -241,17 +247,17 @@ The higher the number, the earlier the method is called. In the example above, a
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630321368></script>
-<script src=/js/perfect-scrollbar.min.js?1630321368></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630321368></script>
-<script src=/js/jquery.sticky.js?1630321368></script>
-<script src=/js/featherlight.min.js?1630321368></script>
-<script src=/js/highlight.pack.js?1630321368></script>
+<script src=/js/clipboard.min.js?1633948623></script>
+<script src=/js/perfect-scrollbar.min.js?1633948623></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1633948623></script>
+<script src=/js/jquery.sticky.js?1633948623></script>
+<script src=/js/featherlight.min.js?1633948623></script>
+<script src=/js/highlight.pack.js?1633948623></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630321368></script>
-<script src=/js/learn.js?1630321368></script>
-<script src=/js/hugo-learn.js?1630321368></script>
-<script src=/mermaid/mermaid.js?1630321368></script>
+<script src=/js/modernizr.custom-3.6.0.js?1633948623></script>
+<script src=/js/learn.js?1633948623></script>
+<script src=/js/hugo-learn.js?1633948623></script>
+<script src=/mermaid/mermaid.js?1633948623></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
