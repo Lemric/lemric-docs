@@ -1,263 +1,126 @@
-<!doctype html><html lang=en class="js csstransforms3d">
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.88.1">
-<meta name=description content>
-<meta name=author content="Dominik Labudzinski">
-<link rel=icon href=/images/favicon.png type=image/png>
-<title>Event Dispatcher - Lemric</title>
-<link href=/css/nucleus.css?1633948623 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1633948623 rel=stylesheet>
-<link href=/css/hybrid.css?1633948623 rel=stylesheet>
-<link href=/css/featherlight.min.css?1633948623 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1633948623 rel=stylesheet>
-<link href=/css/auto-complete.css?1633948623 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1633948623 rel=stylesheet>
-<link href=/css/theme.css?1633948623 rel=stylesheet>
-<link href=/css/tabs.css?1633948623 rel=stylesheet>
-<link href=/css/hugo-theme.css?1633948623 rel=stylesheet>
-<link href=/css/theme-mine.css?1633948623 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1633948623></script>
-<style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
-</head>
-<body data-url=/eventdispatcher/>
-<nav id=sidebar class=showVisitedLinks>
-<div id=header-wrapper>
-<div id=header>
-<a id=logo href=/>
-Lemric.com Docs
-</a>
-</div>
-</div>
-<div class=highlightable>
-<ul class=topics>
-<li data-nav-id=/eventdispatcher/ title="Event Dispatcher" class="dd-item
-parent
-active">
-<a href=/eventdispatcher/>
-Event Dispatcher
-<i class="fas fa-check read-icon"></i>
-</a>
-</li>
-<li data-nav-id=/workflow/ title=Workflow class=dd-item>
-<a href=/workflow/>
-Workflow
-<i class="fas fa-check read-icon"></i>
-</a>
-</li>
-</ul>
-<section id=prefooter>
-<hr>
-<ul>
-</ul>
-</section>
-<section id=footer>
-</section>
-</div>
-</nav>
-<section id=body>
-<div id=overlay></div>
-<div class="padding highlightable">
-<div>
-<div id=top-bar>
-<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
-<span id=sidebar-toggle-span>
-<a href=# id=sidebar-toggle data-sidebar-toggle>
-<i class="fas fa-bars"></i>
-</a>
-</span>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.117.0"><meta name=description content><meta name=author content="Dominik Labudzinski"><link rel=icon href=/images/favicon.png type=image/png><title>Event Dispatcher - Lemric</title><link href=/css/nucleus.css?1692965722 rel=stylesheet><link href=/css/fontawesome-all.min.css?1692965722 rel=stylesheet><link href=/css/hybrid.css?1692965722 rel=stylesheet><link href=/css/featherlight.min.css?1692965722 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1692965722 rel=stylesheet><link href=/css/auto-complete.css?1692965722 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1692965722 rel=stylesheet><link href=/css/theme.css?1692965722 rel=stylesheet><link href=/css/tabs.css?1692965722 rel=stylesheet><link href=/css/hugo-theme.css?1692965722 rel=stylesheet><link href=/css/theme-mine.css?1692965722 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1692965722></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/eventdispatcher/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=/>Lemric.com Docs</a></div></div><div class=highlightable><ul class=topics><li data-nav-id=/eventdispatcher/ title="Event Dispatcher" class="dd-item
+active"><a href=/eventdispatcher/>Event Dispatcher
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/workflow/ title=Workflow class=dd-item><a href=/workflow/>Workflow
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=prefooter><hr><ul></ul></section><section id=footer></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>
-Event Dispatcher
-</span>
-</div>
-<div class=progress>
-<div class=wrapper>
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#events>Events</a></li>
-<li><a href=#the-dispatcher>The Dispatcher</a></li>
-<li><a href=#connecting-listeners>Connecting Listeners</a></li>
-<li><a href=#creating-and-dispatching-event>Creating and Dispatching Event</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-</div>
-<div id=head-tags>
-</div>
-<div id=body-inner>
-<h1>
-Event Dispatcher
-</h1>
-<h3 id=events>Events</h3>
-<p>When an event is dispatched, it’s identified by a unique name (e.g. foo.action), which any number of listeners might be
+<span class=links>Event Dispatcher</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#events>Events</a></li><li><a href=#the-dispatcher>The Dispatcher</a></li><li><a href=#connecting-listeners>Connecting Listeners</a></li><li><a href=#creating-and-dispatching-event>Creating and Dispatching Event</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Event Dispatcher</h1><h3 id=events>Events</h3><p>When an event is dispatched, it’s identified by a unique name (e.g. foo.action), which any number of listeners might be
 listening to. An com.lemric.eventdispatcher.Event instance is also created and passed to all of the listeners. As
-you’ll see later, the Event object itself often contains data about the event being dispatched.</p>
-<h3 id=the-dispatcher>The Dispatcher</h3>
-<p>The dispatcher is the central object of the event dispatching system. Generally one dispatcher is created, which keeps a
+you’ll see later, the Event object itself often contains data about the event being dispatched.</p><h3 id=the-dispatcher>The Dispatcher</h3><p>The dispatcher is the central object of the event dispatching system. Generally one dispatcher is created, which keeps a
 register of listeners. When an event is dispatched via the dispatcher, it notifies all listeners registered in that
-event:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h3 id=connecting-listeners>Connecting Listeners</h3>
-<p>To use an existing event, connect the listener to the dispatcher so that it can be notified when the event is sent.
-Calling the dispatcher"s EventDispatcher.addListener() method associates all valid Callable to an Event:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventListenerInterface<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        AcmeListener listener <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> AcmeListener<span style=color:#f92672>();</span>
-        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
-        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>addListener</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;foo&#34;</span><span style=color:#f92672>,</span> listener<span style=color:#f92672>::</span>preFoo<span style=color:#f92672>);</span>
-        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>addListener</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;foo&#34;</span><span style=color:#f92672>,</span> <span style=color:#f92672>(</span>event<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> listener<span style=color:#f92672>.</span><span style=color:#a6e22e>postFoo</span><span style=color:#f92672>(</span>event<span style=color:#f92672>),</span> 10<span style=color:#f92672>);</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>The EventDispatcher.addListener() method takes up to three arguments:</p>
-<ul>
-<li>The name of the event (string) this listener wants to listen to;</li>
-<li>Callable that will be executed when the specified event is fired;</li>
-<li>Optional priority, defined as a positive or negative integer (0 by default). The higher the number, the earlier it
+event:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><h3 id=connecting-listeners>Connecting Listeners</h3><p>To use an existing event, connect the listener to the dispatcher so that it can be notified when the event is sent.
+Calling the dispatcher"s EventDispatcher.addListener() method associates all valid Callable to an Event:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventListenerInterface<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        AcmeListener listener <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> AcmeListener<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>addListener</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;foo&#34;</span><span style=color:#f92672>,</span> listener<span style=color:#f92672>::</span>preFoo<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>addListener</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;foo&#34;</span><span style=color:#f92672>,</span> <span style=color:#f92672>(</span>event<span style=color:#f92672>)</span> <span style=color:#f92672>-&gt;</span> listener<span style=color:#f92672>.</span><span style=color:#a6e22e>postFoo</span><span style=color:#f92672>(</span>event<span style=color:#f92672>),</span> 10<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>The EventDispatcher.addListener() method takes up to three arguments:</p><ul><li>The name of the event (string) this listener wants to listen to;</li><li>Callable that will be executed when the specified event is fired;</li><li>Optional priority, defined as a positive or negative integer (0 by default). The higher the number, the earlier it
 calls the listener. If two receivers have the same priority, they are executed in the order in which they were added
-to the dispatcher.</li>
-</ul>
-<p>After registering the listener with the dispatcher, it waits for notification about the event. In the example above,
+to the dispatcher.</li></ul><p>After registering the listener with the dispatcher, it waits for notification about the event. In the example above,
 when the foo event is dispatched, the dispatcher calls the AcmeListener.preFoo() method and passes the Event object as a
-single argument:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.Event<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AcmeListener</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> Event <span style=color:#a6e22e>onFooAction</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#75715e>//... some action
-</span><span style=color:#75715e></span>      <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>The event argument is the event object that was passed when the event was dispatched. In many cases, the special event
+single argument:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.Event<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AcmeListener</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> Event <span style=color:#a6e22e>onFooAction</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//... some action
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>The event argument is the event object that was passed when the event was dispatched. In many cases, the special event
 subclass is passed with additional information. You can check the documentation or implementation of each event to
-determine which instance is being passed.</p>
-<h3 id=creating-and-dispatching-event>Creating and Dispatching Event</h3>
-<p>In addition to registering listeners with existing events, you can create and send your own events. This is useful when
+determine which instance is being passed.</p><h3 id=creating-and-dispatching-event>Creating and Dispatching Event</h3><p>In addition to registering listeners with existing events, you can create and send your own events. This is useful when
 creating third-party libraries as well as when you want to be flexible and separate the various components of your own
-system.</p>
-<h4 id=creating-event>Creating Event</h4>
-<p>Suppose you want to create a new event - notify - that is sent each time a user change product status. By sending this
+system.</p><h4 id=creating-event>Creating Event</h4><p>Suppose you want to create a new event - notify - that is sent each time a user change product status. By sending this
 event, you will forward an instance of the custom event that has access to the product status. Start by creating this
-custom event class and documenting it:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.Event<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>NotifyEvent</span> <span style=color:#66d9ef>extends</span> Event <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>protected</span> Status status<span style=color:#f92672>;</span>
-    
-    NotifyEvent<span style=color:#f92672>(</span>Status status<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>status</span> <span style=color:#f92672>=</span> status<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-    
-    <span style=color:#66d9ef>public</span> Status <span style=color:#a6e22e>getStatus</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>status</span><span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><blockquote>
-<p>:warning: If you don’t need to pass any additional data to the event listeners, you can also use the default com.lemric.eventdispatcher.Event class.</p>
-</blockquote>
-<p>Each listener now has access to the status by NotifyEvent.getStatus() method.</p>
-<h4 id=dispatch-the-event>Dispatch the Event</h4>
-<p>The EventDispatcher.dispatch() method notifies all listeners about the event. Takes two arguments: an Event instance to
-pass to each listener for this event, and the name of the event to invoke:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
-        
-        Status status <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Status<span style=color:#f92672>();</span>
-        Event event <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> NotifyEvent<span style=color:#f92672>(</span>status<span style=color:#f92672>);</span>
-        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>dispatch</span><span style=color:#f92672>(</span>event<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;notify&#34;</span><span style=color:#f92672>);</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>Notice that a special OrderPlacedEvent object has been created and passed to the EventDispatcher.dispatch() method. Now
-each listener of the order.placed event will receive the OrderPlacedEvent event.</p>
-<h4 id=using-event-subscribers>Using Event Subscribers</h4>
-<p>The most common way to listen for an event is to register an event listener with the dispatcher.
-This listener can listen for one or more events and is notified each time these events are sent.</p>
-<p>Another way to listen to events is with the event subscriber. The event subscriber is a class that is able to tell the dispatcher exactly which events to subscribe to.
+custom event class and documenting it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.Event<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>NotifyEvent</span> <span style=color:#66d9ef>extends</span> Event <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> Status status<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    NotifyEvent<span style=color:#f92672>(</span>Status status<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>status</span> <span style=color:#f92672>=</span> status<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> Status <span style=color:#a6e22e>getStatus</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>status</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><blockquote><p>:warning: If you don’t need to pass any additional data to the event listeners, you can also use the default com.lemric.eventdispatcher.Event class.</p></blockquote><p>Each listener now has access to the status by NotifyEvent.getStatus() method.</p><h4 id=dispatch-the-event>Dispatch the Event</h4><p>The EventDispatcher.dispatch() method notifies all listeners about the event. Takes two arguments: an Event instance to
+pass to each listener for this event, and the name of the event to invoke:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        Status status <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Status<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        Event event <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> NotifyEvent<span style=color:#f92672>(</span>status<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>dispatch</span><span style=color:#f92672>(</span>event<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;notify&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>Notice that a special OrderPlacedEvent object has been created and passed to the EventDispatcher.dispatch() method. Now
+each listener of the order.placed event will receive the OrderPlacedEvent event.</p><h4 id=using-event-subscribers>Using Event Subscribers</h4><p>The most common way to listen for an event is to register an event listener with the dispatcher.
+This listener can listen for one or more events and is notified each time these events are sent.</p><p>Another way to listen to events is with the event subscriber. The event subscriber is a class that is able to tell the dispatcher exactly which events to subscribe to.
 Implements the com.lemric.eventdispatcher.EventSubscriberInterface interface that requires a single static method named getSubscribedEvents().
-Let"s take the following example of a subscriber subscribing to the kernel and order events:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventSubscriberInterface<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subscriber</span> <span style=color:#66d9ef>implements</span> EventSubscriberInterface <span style=color:#f92672>{</span>
-    <span style=color:#a6e22e>@Override</span>
-    <span style=color:#66d9ef>public</span> Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> Map<span style=color:#f92672>&lt;</span>EventListenerInterface<span style=color:#f92672>&lt;</span>Event<span style=color:#f92672>&gt;,</span> Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>getSubscribedEvents</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
-            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;kernel&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
-                put<span style=color:#f92672>(</span>TestRealEventSubscriber<span style=color:#f92672>::</span>onKernelResponsePre<span style=color:#f92672>,</span> 0<span style=color:#f92672>);</span>
-                put<span style=color:#f92672>(</span>TestRealEventSubscriber<span style=color:#f92672>::</span>onKernelResponsePost<span style=color:#f92672>,</span> 0<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}});</span>
-            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;order&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
-              put<span style=color:#f92672>(</span>TestRealEventSubscriber<span style=color:#f92672>::</span>onStoreOrder<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>10<span style=color:#f92672>);</span>
-            <span style=color:#f92672>}});</span>
-        <span style=color:#f92672>}};</span>
-    <span style=color:#f92672>}</span>
-    
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Event <span style=color:#a6e22e>onKernelResponsePre</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#75715e>// ...
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-  
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Event <span style=color:#a6e22e>onKernelResponsePost</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#75715e>// ...
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-  
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Event <span style=color:#a6e22e>onStoreOrder</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#75715e>// ...
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>This is very similar to the listening class, except that the class itself can tell the dispatcher what events to listen to.
-To register the subscriber with the dispatcher, use the addSubscriber() method:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
-
-        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>addSubscriber</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> EventSubscriberInterface<span style=color:#f92672>());</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>The dispatcher will automatically register the subscriber for each event returned by the getSubscribedEvents() method.
+Let"s take the following example of a subscriber subscribing to the kernel and order events:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventSubscriberInterface<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subscriber</span> <span style=color:#66d9ef>implements</span> EventSubscriberInterface <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Override</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> Map<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>,</span> Map<span style=color:#f92672>&lt;</span>EventListenerInterface<span style=color:#f92672>&lt;</span>Event<span style=color:#f92672>&gt;,</span> Integer<span style=color:#f92672>&gt;&gt;</span> <span style=color:#a6e22e>getSubscribedEvents</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
+</span></span><span style=display:flex><span>            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;kernel&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
+</span></span><span style=display:flex><span>                put<span style=color:#f92672>(</span>TestRealEventSubscriber<span style=color:#f92672>::</span>onKernelResponsePre<span style=color:#f92672>,</span> 0<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>                put<span style=color:#f92672>(</span>TestRealEventSubscriber<span style=color:#f92672>::</span>onKernelResponsePost<span style=color:#f92672>,</span> 0<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>}});</span>
+</span></span><span style=display:flex><span>            put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;order&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;()</span> <span style=color:#f92672>{{</span>
+</span></span><span style=display:flex><span>              put<span style=color:#f92672>(</span>TestRealEventSubscriber<span style=color:#f92672>::</span>onStoreOrder<span style=color:#f92672>,</span> <span style=color:#f92672>-</span>10<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>}});</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>}};</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Event <span style=color:#a6e22e>onKernelResponsePre</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Event <span style=color:#a6e22e>onKernelResponsePost</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> Event <span style=color:#a6e22e>onStoreOrder</span><span style=color:#f92672>(</span>Event event<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> event<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>This is very similar to the listening class, except that the class itself can tell the dispatcher what events to listen to.
+To register the subscriber with the dispatcher, use the addSubscriber() method:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.lemric.eventdispatcher.EventDispatcher<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Application</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        EventDispatcher dispatcher <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EventDispatcher<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        dispatcher<span style=color:#f92672>.</span><span style=color:#a6e22e>addSubscriber</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> EventSubscriberInterface<span style=color:#f92672>());</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>The dispatcher will automatically register the subscriber for each event returned by the getSubscribedEvents() method.
 This method returns an array indexed by event name whose values are either the name of the method to be invoked or an array
-composed of the name of the method to be invoked and the priority (a positive or negative integer, which defaults to 0).</p>
-<p>The above example shows how to register several listeners for the same event on a subscriber, and also shows how to pass priority to each listener method.
-The higher the number, the earlier the method is called. In the example above, after kernel has fired an event, the onKernelResponsePre() and onKernelResponsePost() methods are dispatched in that order.</p>
-<footer class=footline>
-</footer>
-</div>
-</div>
-<div id=navigation>
-</div>
-</section>
-<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
-</div>
-<script src=/js/clipboard.min.js?1633948623></script>
-<script src=/js/perfect-scrollbar.min.js?1633948623></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1633948623></script>
-<script src=/js/jquery.sticky.js?1633948623></script>
-<script src=/js/featherlight.min.js?1633948623></script>
-<script src=/js/highlight.pack.js?1633948623></script>
-<script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1633948623></script>
-<script src=/js/learn.js?1633948623></script>
-<script src=/js/hugo-learn.js?1633948623></script>
-<script src=/mermaid/mermaid.js?1633948623></script>
-<script>mermaid.initialize({startOnLoad:!0})</script>
-</body>
-</html>
+composed of the name of the method to be invoked and the priority (a positive or negative integer, which defaults to 0).</p><p>The above example shows how to register several listeners for the same event on a subscriber, and also shows how to pass priority to each listener method.
+The higher the number, the earlier the method is called. In the example above, after kernel has fired an event, the onKernelResponsePre() and onKernelResponsePost() methods are dispatched in that order.</p><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1692965722></script>
+<script src=/js/perfect-scrollbar.min.js?1692965722></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1692965722></script>
+<script src=/js/jquery.sticky.js?1692965722></script>
+<script src=/js/featherlight.min.js?1692965722></script>
+<script src=/js/highlight.pack.js?1692965722></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=/js/modernizr.custom-3.6.0.js?1692965722></script>
+<script src=/js/learn.js?1692965722></script>
+<script src=/js/hugo-learn.js?1692965722></script>
+<script src=/mermaid/mermaid.js?1692965722></script>
+<script>mermaid.initialize({startOnLoad:!0})</script></body></html>
