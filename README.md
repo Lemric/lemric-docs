@@ -1,2 +1,2 @@
 # Documentation
-## [ Event Dispatcher (com.lemric.eventdispatcher) ](https://docs.lemric.com/EventDispatcher)
+## [ Event Dispatcher (com.lemric.eventdispatcher) ](https://docs.lemric.com/eventdispatcher)
