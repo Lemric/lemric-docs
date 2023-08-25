@@ -13,11 +13,11 @@ Consider the following example for a blog post. A post can have one of a number 
 In a workflow, these statuses are called places. You can define the workflow like this:
 
 ```java
-import com.labudzinski.workflow.DefinitionBuilder;
-import com.labudzinski.workflow.Definition;
-import com.labudzinski.workflow.PlaceInterface;
-import com.labudzinski.workflow.Transition;
-import com.labudzinski.workflow.Workflow;
+import com.lemric.workflow.DefinitionBuilder;
+import com.lemric.workflow.Definition;
+import com.lemric.workflow.PlaceInterface;
+import com.lemric.workflow.Transition;
+import com.lemric.workflow.Workflow;
 import com.lemric.workflow.markingstore.MethodMarkingStore;
 
 import java.util.HashMap;
